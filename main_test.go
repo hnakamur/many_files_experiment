@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"path/filepath"
+	"testing"
+)
 
 func TestNumDigits(t *testing.T) {
 	testCases := []struct {
@@ -58,14 +61,14 @@ func TestNumToFilename(t *testing.T) {
 		{val: 99, filename: "99.b"},
 		{val: 100, filename: "100.b"},
 		{val: 999, filename: "999.b"},
-		{val: 1000, filename: "1/000.b"},
-		{val: 1001, filename: "1/001.b"},
-		{val: 1999, filename: "1/999.b"},
-		{val: 2000, filename: "2/000.b"},
-		{val: 9999, filename: "9/999.b"},
-		{val: 10000, filename: "10/000.b"},
-		{val: 999999, filename: "999/999.b"},
-		{val: 1000000, filename: "1/000/000.b"},
+		{val: 1000, filename: filepath.Join("1", "000.b")},
+		{val: 1001, filename: filepath.Join("1", "001.b")},
+		{val: 1999, filename: filepath.Join("1", "999.b")},
+		{val: 2000, filename: filepath.Join("2", "000.b")},
+		{val: 9999, filename: filepath.Join("9", "999.b")},
+		{val: 10000, filename: filepath.Join("10", "000.b")},
+		{val: 999999, filename: filepath.Join("999", "999.b")},
+		{val: 1000000, filename: filepath.Join("1", "000", "000.b")},
 	}
 	for _, c := range testCases {
 		got := numToFilename(c.val)

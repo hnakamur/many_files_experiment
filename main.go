@@ -23,7 +23,7 @@ func maxPowerToTenBelow(v int) int {
 }
 
 func numToFilename(v int) string {
-	buf := make([]byte, 0, 64)
+	buf := make([]byte, 0, 256)
 	w := 1
 	p := 1
 	for ; p*10 <= v; p *= 10 {
@@ -33,7 +33,7 @@ func numToFilename(v int) string {
 		d := v / p
 		buf = append(buf, byte(d)+'0')
 		if w%3 == 1 && w >= 3 {
-			buf = append(buf, '/')
+			buf = append(buf, os.PathSeparator)
 		}
 
 		v -= d * p
