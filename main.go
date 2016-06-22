@@ -7,21 +7,6 @@ import (
 	"path/filepath"
 )
 
-func numDigits(v int) int {
-	n := 1
-	for ; v >= 10; v /= 10 {
-		n++
-	}
-	return n
-}
-
-func maxPowerToTenBelow(v int) int {
-	d := 1
-	for ; d*10 <= v; d *= 10 {
-	}
-	return d
-}
-
 func numToFilename(v int) string {
 	buf := make([]byte, 0, 256)
 	w := 1
